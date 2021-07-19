@@ -1,0 +1,50 @@
+.movie {
+  background-color: #f1faee;
+  border-radius: 5px;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 25px;
+}
+.movieCover {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #457b9d;
+  padding: 25px;
+  margin-right: 20px;
+}
+.movieCover img {
+  width: 200px;
+  border-radius: 3px;
+}
+.movie .title {
+  margin-bottom: 5px;
+  font-size: 1.5em;
+}
+.movie .title em {
+  color: #fb8500;
+}
+.movie .releaseDate {
+  margin-bottom: 15px;
+}
+.movie .releaseDate,
+.movie .overview em {
+  color: #293241;
+}
+.movie .movieDetails {
+  padding: 25px;
+}
+@media (max-width: 700px) {
+  .movie {
+    display: flex;
+    flex-direction: column;
+  }
+  .movie .movieCover {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-right: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+}

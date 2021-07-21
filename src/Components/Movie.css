@@ -2,7 +2,7 @@
   background-color: #f1faee;
   border-radius: 5px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   margin-bottom: 25px;
 }
 .movieCover {

@@ -1,14 +1,17 @@
 header {
-  background-color: #1d3557;
+  background: #0b7fab; 
+  background: #151515; 
+  background: #0b3142; 
   height: 10rem;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-shadow: 0px 2px 2px -2px #111;  
 }
 header #logo {
   background-color: #fff;
-  width: 150px;
+  width: 100px;
   max-height: 7rem;
   padding: 2%;
   border-radius: 10px;
@@ -23,29 +26,47 @@ header form {
   justify-content: center;
 }
 header input {
+  font-size: 1.7rem;
   min-width: 75%;
   background-color: #f1faee;
   border-color: #ccc;
   border-radius: 8px;
   margin-right: 8px;
   padding-left: 2%;
+  transition: all 0.3s ease;
+}
+header input:focus {
+  border-color: #151515;
+  background-color: #d3d8ff;
+  
 }
 header button {
   height: 4em;
   border: none;
   border-radius: 8px;
-  background-color: #e63946;
+  background-color: #129cff;
+  color: #fff;
+  font-size: 1.2rem;
   padding: 0 2%;
+  cursor: pointer;
+  transition: all 0.15s ease-in;
 }
+header button:hover {
+  color: whitesmoke;
+  background: #3770c9;
+  border-color: #151515;
+}
+
 @media (max-width: 700px) {
   header {
-    padding: 25px;
+    padding: 2.5rem 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-content: space-between;
   }
   header #logo {
     height: 50%;
+    margin-left: 0;
   }
   header #logo img {
     height: 90%;
@@ -54,8 +75,4 @@ header button {
     width: 100%;
     padding: 10px;
   }
-  /* }
-  header form input{
-    margin-right: 8px;
-  } */
 }

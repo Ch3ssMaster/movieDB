@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./Header.css";
 
 const Header = (props) => {
@@ -10,19 +10,23 @@ const Header = (props) => {
 
   const submitSearch = (event) => {
     event.preventDefault();
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=8f781d70654b5a6f2fa69770d1d115a3&query=${enteredSearch}`
-    )
-      .then((response) => response.json())
-      .then((data) => props.onSearch(data));
-
-    setSearch("");
+    if (enteredSearch.trim().length > 2) {
+      props.onSearch(enteredSearch);
+      setSearch("");
+    } else {
+      props.onSearch(false);
+    }
   };
 
   return (
     <header>
       <div id="logo">
-        <img src={"https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"} alt="" />
+        <img
+          src={
+            "https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+          }
+          alt=""
+        />
       </div>
       <form onSubmit={submitSearch}>
         <input

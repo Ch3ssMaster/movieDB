@@ -3,10 +3,9 @@ import Movie from "./Movie";
 import NotFound from "../Img/poster-not-found.jpg";
 
 const Movies = (props) => {
-  if (props.movies.results) {
-    console.log(props.movies.results);
+  if (props.movies.error === false && props.movies.data !== null) {
     let movies = [];
-    for (const result of props.movies.results) {
+    for (const result of props.movies.data.results) {
       if (result.overview !== "") {
         let poster = "";
         if (result.poster_path !== null) {
@@ -14,9 +13,12 @@ const Movies = (props) => {
         } else {
           poster = NotFound;
         }
+        let title = result.title ? result.title : "No title available";
+        let release = result.release ? result.release : "No release available";
         const movieData = {
-          title: result.title,
-          release: result.release_date,
+          id: result.id,
+          title,
+          release,
           overview: result.overview,
           poster,
         };
@@ -38,7 +40,11 @@ const Movies = (props) => {
       </main>
     );
   } else {
-    return <main></main>;
+    return (
+      <main>
+        <div className={props.movies.classes}>{props.movies.data}</div>
+      </main>
+    );
   }
 };
 export default Movies;

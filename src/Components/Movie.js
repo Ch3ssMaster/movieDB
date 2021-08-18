@@ -4,7 +4,7 @@ import "./Movie.css";
 const Movie = (props) => {
   return (
     <div className="movie">
-      <Link to={`movie-details/${props.id}`}>
+      <Link to={`/movie-details/${props.id}`}>
         <div className="movieCover">
           <img src={props.poster} alt="Default cover" />
         </div>

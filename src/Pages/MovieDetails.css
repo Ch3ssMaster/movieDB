@@ -1,0 +1,70 @@
+.box {
+  background-color: #f1faee;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.cover {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3%;
+}
+.content {
+  padding: 1rem 1.5rem;
+}
+.title {
+  background-color: #da251c;
+  border-radius: 3px;
+padding: .5rem .7rem;
+}
+.content h2 {
+  font-size: 3em;
+  font-weight: bold;
+  color: #fff;   
+}
+.content h3 {
+  font-style: italic;
+  font-size: 1.5em;
+}
+.small {
+  padding: 0.5rem 0;
+  margin: 2%;
+}
+.small img {
+  width: 20px;
+  margin-left: 2%;
+  margin-bottom: -3px;
+}
+.small > span {
+  background-color: #004e98;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  margin: 0 3%;
+}
+.small > span:first-child {
+ margin-left: 0;
+}
+.genres {
+  background-color: #3aafb9;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 3%;
+  display: inline-block;
+}
+.overview {
+  color: #fff;
+  background-color: #0d261d;
+  padding: 1rem 1.3rem;
+  font-size: 1.1rem;
+}
+.overview span {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-right: 1%;
+}

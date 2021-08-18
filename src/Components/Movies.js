@@ -1,5 +1,5 @@
-import "./Movies.css";
 import Movie from "./Movie";
+import Box from "../UI/Box";
 import NotFound from "../Img/poster-not-found.jpg";
 
 const Movies = (props) => {
@@ -42,7 +42,7 @@ const Movies = (props) => {
   } else {
     return (
       <main>
-        <div className={props.movies.classes}>{props.movies.data}</div>
+        <Box className={props.movies.classes}>{props.movies.data}</Box>
       </main>
     );
   }

@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { ReviewsProvider } from "./store/reviews-context";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ReviewsProvider>
+        <App />
+      </ReviewsProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

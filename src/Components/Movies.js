@@ -13,7 +13,7 @@ const Movies = (props) => {
         } else {
           poster = NotFound;
         }
-        console.log(result);
+        // console.log(result);
         let title = result.original_title ? result.original_title : "No title available";
         let release = result.release_date ? result.release_date : "No release available";
         const movieData = {

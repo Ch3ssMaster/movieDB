@@ -4,8 +4,11 @@ import "./App.css";
 import Header from "./Components/Header";
 import Movies from "./Components/Movies";
 import MovieDetails from "./Pages/MovieDetails";
+import MyList from "./Pages/MyList";
 
 function App() {
+  console.log('app running!');
+  
   const [moviesList, setMovies] = useState({
     error: true,
     classes: "info",
@@ -59,6 +62,9 @@ function App() {
       </Route>
       <Route path="/movie-details/:movieId">
         <MovieDetails />
+      </Route>
+      <Route path="/my-list">
+        <MyList />
       </Route>
     </Switch>
   );

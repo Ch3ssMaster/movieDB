@@ -1,5 +1,12 @@
-import React, { useState, useEffect, useCallback, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useReducer,
+  useContext,
+} from "react";
+import { ReviewsContext } from "../store/reviews-context";
+import { useParams, Link } from "react-router-dom";
 import Box from "../UI/Box";
 import ReviewForm from "../Components/ReviewForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -14,7 +21,11 @@ const reviewReducer = (state, action) => {
       console.log("running!");
       state = [
         ...state,
-        { rate: action.rate, review: action.review, details: action.details },
+        {
+          rate: action.rate,
+          review: action.review,
+          details: action.details.data,
+        },
       ];
       return state;
     default:
@@ -23,7 +34,8 @@ const reviewReducer = (state, action) => {
 };
 
 const MovieDetails = () => {
-  const [state, dispatchReview] = useReducer(reviewReducer, []);
+  const ctx = useContext(ReviewsContext);
+  const [state, dispatchReview] = useReducer(reviewReducer, ctx.reviews);
   const [rating, setRating] = useState(0);
   const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
@@ -40,11 +52,12 @@ const MovieDetails = () => {
       details: movieDetails,
     });
     setRating(0);
-    console.log(state);
+    // ctx.setReviews(state);
+    // console.log(ctx.reviews);
   };
   const ratingChanged = (newRating) => {
     setRating(newRating);
-    console.log(newRating, rating);
+    // console.log(newRating, rating);
   };
   const MovieDetailsHandler = useCallback(() => {
     fetch(
@@ -98,6 +111,11 @@ const MovieDetails = () => {
     }, 900);
     return () => clearTimeout(timer);
   }, [MovieDetailsHandler]);
+
+  useEffect(() => {
+    ctx.setReviews(state);
+    console.log(ctx.reviews);
+  }, [ctx.setReviews, state]);
 
   return (
     <main>
@@ -156,6 +174,7 @@ const MovieDetails = () => {
                 placeholder="Add a review"
               />
             </div>
+            <Link to="/my-list">Ver lista de comentarios</Link>
           </div>
         </div>
       )}

@@ -1,5 +1,12 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 
-const ReviewsContext = React.createContext({});
+export const ReviewsContext = createContext();
 
-export const Reviews = (props) => {};
+export const ReviewsProvider = (props) => {
+  const [reviews, setReviews] = useState([]);
+  return (
+    <ReviewsContext.Provider value={{reviews, setReviews}}>
+      {props.children}
+    </ReviewsContext.Provider>
+  );
+};

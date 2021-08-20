@@ -1,12 +1,30 @@
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import Box from "../UI/Box";
+import ReviewForm from "../Components/ReviewForm";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import NotFound from "../Img/poster-not-found.jpg";
 import StarRating from "../Img/star_rating.png";
+import ReactStars from "react-stars";
 import "./MovieDetails.css";
 
+const reviewReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_REVIEW":
+      console.log("running!");
+      state = [
+        ...state,
+        { rate: action.rate, review: action.review, details: action.details },
+      ];
+      return state;
+    default:
+      return [];
+  }
+};
+
 const MovieDetails = () => {
+  const [state, dispatchReview] = useReducer(reviewReducer, []);
+  const [rating, setRating] = useState(0);
   const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [movieDetails, setMovieDetails] = useState({
@@ -14,6 +32,20 @@ const MovieDetails = () => {
     classes: "",
     data: null,
   });
+  const commentHandler = (comment) => {
+    dispatchReview({
+      type: "ADD_REVIEW",
+      rate: rating,
+      review: comment,
+      details: movieDetails,
+    });
+    setRating(0);
+    console.log(state);
+  };
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+    console.log(newRating, rating);
+  };
   const MovieDetailsHandler = useCallback(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=8f781d70654b5a6f2fa69770d1d115a3&language=en-US
@@ -39,7 +71,7 @@ const MovieDetails = () => {
         if ("success" in data) {
           throw Error(data.status_message);
         } else if (Object.keys(data).length > 0) {
-          console.log(data);
+          // console.log(data);
           setMovieDetails({
             error: false,
             classes: "",
@@ -108,6 +140,22 @@ const MovieDetails = () => {
             <p className="overview">
               <span>Overview:</span> {movieDetails.data.overview}
             </p>
+            <div className="rate-movie">
+              <h3>Rate This Movie</h3>
+              <ReactStars
+                className="stars"
+                count={5}
+                onChange={ratingChanged}
+                size={48}
+                color1={"#d8d8dd"}
+                color2={"#ffd700"}
+                value={rating}
+              />
+              <ReviewForm
+                onComment={commentHandler}
+                placeholder="Add a review"
+              />
+            </div>
           </div>
         </div>
       )}

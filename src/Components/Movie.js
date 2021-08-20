@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom";
-import "./Movie.css";
+import classes from "./Movie.module.css";
 
 const Movie = (props) => {
   return (
-    <div className="movie">
+    <div className={classes.movie}>
       <Link to={`/movie-details/${props.id}`}>
-        <div className="movieCover">
+        <div className={classes.movieCover}>
           <img src={props.poster} alt="Default cover" />
         </div>
       </Link>
-      <div className="movieDetails">
-        <div className="title">
+      <div className={classes.movieDetails}>
+        <div className={classes.title}>
           <strong>
             Title:
             <em> {props.title}</em>
           </strong>
         </div>
-        <div className="releaseDate">
+        <div className={classes.releaseDate}>
           <strong>Release Date: </strong>
           <em>{props.release}</em>
         </div>
-        <div className="overview">
+        <div className={classes.overview}>
           <strong>Overview: </strong>
           {props.overview}
         </div>

@@ -1,0 +1,92 @@
+.input,
+.inputWarning,
+.button:disabled,
+.button {
+  padding: 0.7rem 0.5rem;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #00334e;
+}
+.input {
+  background-color: #edeef7;
+  margin-bottom: 3%;
+}
+.input:focus,
+.input:hover {
+  border: 1px solid #7868e6;
+  background-color: #b8b5ff;
+}
+.inputWarning {
+  border: 2px solid #ff1d58;
+  background-color: #f75990;
+}
+.warning {
+  color: #ff1d58;
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 2% 0 5%;
+}
+@-webkit-keyframes button {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
+}
+@keyframes button {
+  100% {
+    top: -12px;
+    right: -12px;
+    bottom: -12px;
+    left: -12px;
+    opacity: 0;
+  }
+}
+.button {
+  background: #93b5e1;
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+}
+.button:before {
+  content: "";
+  position: absolute;
+  border: 8px solid #93b5e1;
+  border-radius: 8px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+}
+.button:hover:before,
+.button:focus:before,
+.button:active:before {
+  -webkit-animation-name: button;
+  animation-name: button;
+}
+.button:disabled {
+  background-color: #e8e8e8;
+  border: 8px solid #e8e8e8;
+  border-radius: 8px;
+  color: #00334e;
+}
+
+.button:disabled:before {
+  border: 8px solid #e8e8e8;
+  border-radius: 8px;
+}
+.button:disabled:hover:before,
+.button:disabled:focus:before,
+.button:disabled:active:before {
+  -webkit-animation-name: none;
+  animation-name: none;
+}
